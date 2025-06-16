@@ -1,0 +1,121 @@
+/* Importações */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import "tailwindcss";
+
+/* Variáveis globais */
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --custom-blue: #212B44;
+  --custom-darkblue: #0E1625;
+  --custom-gold: #E3C76A;
+  --custom-grey: #D0D5DC;
+  --custom-green: #44884E;
+}
+
+/* Tema escuro */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: var(--custom-blue);
+    --foreground: #ededed;
+  }
+}
+
+/* Estilização base */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', sans-serif;
+}
+
+p {
+  color: var(--custom-grey);
+}
+p b {
+  color: #ededed;
+}
+
+h3 {
+  color: var(--custom-gold);
+}
+
+/* Títulos e nomes */
+#title {
+  color: var(--custom-grey);
+}
+
+#silvano-nome {
+  font-weight: bold;
+  color: var(--custom-gold);
+}
+
+/* Botão do WhatsApp */
+#whatsapp-button {
+  position: relative;
+  top: -26%;
+}
+
+
+/* Ícone dourado para span */
+#areas-de-atuacao span::before {
+  content: "";
+  position: relative;
+  display: inline-block;
+  background-image: url("/icon/info-gold.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 0.5rem;
+  top: -3px;
+  vertical-align: middle;
+}
+
+/* Responsividade */
+@media (max-width: 640px) {
+  h2 {
+    font-size: 1.25rem;
+    text-align: center;
+  }
+
+  h3 {
+    font-size: 1rem;
+  }
+
+  #silvano-nome {
+    font-size: 1.25rem;
+    text-align: center;
+  }
+
+  .text-sm {
+    font-size: 0.9rem;
+  }
+
+  .flex-col > div {
+    text-align: center;
+    margin: 0 auto;
+  }
+}
+
+/* Ajustes específicos para tamanhos de tela */
+@media (max-width: 425px) {
+  #whatsapp-button {
+    top: -20%;
+  }
+}
+
+@media (min-width: 422px) {
+  #whatsapp-button {
+    top: -15%;
+  }
+}
+
+@media (max-width: 375px) {
+  #whatsapp-button {
+    top: 0%;
+  }
+}
