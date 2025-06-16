@@ -152,8 +152,6 @@ export default function Home() {
         </div>
       </section>
 
-
-      {/* contato */}
       {/* contato */}
       <section className="bg-[--background] py-6 px-4 sm:px-8 w-full mx-auto rounded-md">
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
@@ -189,8 +187,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-
 
 
 
