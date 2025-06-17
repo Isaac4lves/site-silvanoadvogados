@@ -1,7 +1,19 @@
+"use client";
+
 import Image from "next/image";
 import "./globals.css";
+import { useState } from "react";
 
 export default function Home() {
+  const [copied, setCopied] = useState(false);
+
+  function copyToClipboard(text: string) {
+    navigator.clipboard.writeText(text).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
+  }
+
   return (
     <div>
 
@@ -70,15 +82,15 @@ export default function Home() {
           </p>
 
 
-          <div className="text-left text-[0.95rem] sm:text-base leading-relaxed space-y-4 text-gray-800">
+          <div className="text-justify text-[0.95rem] sm:text-base leading-relaxed space-y-4 text-gray-800">
             <p>
-              <b>Silvano Almeida</b> é advogado com <b>mais de 10 anos de experiência</b> nas áreas de <b>Direito Constitucional</b> e <b>Direito e Processo do Trabalho</b>. Atua com excelência na <b>defesa de interesses constitucionais e trabalhistas</b>, sempre em busca das <b>melhores soluções jurídicas</b>.
+              Silvano Almeida é advogado com mais de 10 anos de experiência nas áreas de Direito Constitucional e Direito e Processo do Trabalho. Atua com excelência na defesa de interesses constitucionais e trabalhistas, sempre em busca das melhores soluções jurídicas.
             </p>
             <p>
-              Possui experiência como <b>assistente jurídico na Minerva Foods</b> e como <b>assessor jurídico em Palmas/TO</b>, o que lhe proporcionou uma <b>visão estratégica sobre questões legais</b> no setor público e privado. Com <b>sólida formação</b> e <b>abordagem prática</b>, oferece <b>soluções jurídicas personalizadas, eficazes e seguras</b>.
+              Possui experiência como assistente jurídico na Minerva Foods e como assessor jurídico em Palmas/TO, o que lhe proporcionou uma visão estratégica sobre questões legais no setor público e privado. Com sólida formação e abordagem prática, oferece soluções jurídicas personalizadas, eficazes e seguras.
             </p>
             <p>
-              <b>Comprometido com a ética e a justiça</b>, destaca-se pela <b>capacidade de entender as necessidades dos clientes</b> e atuar de forma estratégica para alcançar <b>resultados positivos e sustentáveis</b>.
+              Comprometido com a ética e a justiça, destaca-se pela capacidade de entender as necessidades dos clientes e atuar de forma estratégica para alcançar resultados positivos e sustentáveis.
             </p>
           </div>
         </div>
@@ -151,11 +163,9 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* contato */}
       <section className="bg-[--background] py-6 px-4 sm:px-8 w-full mx-auto rounded-md">
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
-
           <Image
             src="/logo_v1-recortado.png"
             alt="Logo"
@@ -167,29 +177,51 @@ export default function Home() {
 
           <div className="flex flex-col gap-4 sm:gap-6">
             <ul className="space-y-4 sm:space-y-5 max-w-[800px] text-sm sm:text-base">
-              <li className="flex items-center gap-3">
+
+              {/* Telefone */}
+              <li
+                className="flex items-center gap-3 cursor-pointer transition-transform hover:scale-105 active:scale-105"
+                onClick={() => copyToClipboard("63992537691")}
+                title="Clique para copiar"
+              >
                 <Image src="/icon/phone-gold.png" alt="Telefone" width={20} height={20} />
-                <span>63 99253-7691 | 63 98410-0872</span>
-              </li>
-
-              <li className="flex items-center gap-3">
-                <Image src="/icon/email-gold.png" alt="E-mail" width={20} height={20} />
-                <span>advsilvanoalmeida@gmail.com</span>
-              </li>
-
-              <li className="flex items-center gap-3">
-                <Image src="/icon/pin-gold.png" alt="Localização" width={20} height={20} />
-                <span className="leading-tight">
-                  Rua Guanabara, Quadra D, Lote 06 -A<br />Setor urbano, Araguaína Tocantins
+                <span className={copied ? "animate-blink" : ""}>
+                  63 99253-7691 | 63 98410-0872
                 </span>
+                {copied && <span className="text-xs text-green-600 ml-2 select-none">Copiado!</span>}
               </li>
+
+
+
+              {/* E-mail */}
+              <li className="flex items-center gap-3 transition-transform hover:scale-105 active:scale-105">
+                <Image src="/icon/email-gold.png" alt="E-mail" width={20} height={20} />
+                <a
+                  href="mailto:advsilvanoalmeida@gmail.com"
+                >
+                  advsilvanoalmeida@gmail.com
+                </a>
+              </li>
+
+
+              {/* Endereço */}
+              <li className="flex items-center gap-3 transition-transform hover:scale-105 active:scale-105">
+                <Image src="/icon/pin-gold.png" alt="Localização" width={20} height={20} />
+                <a
+                  href="https://www.google.com/maps?q=Rua+Guanabara,+Quadra+D,+Lote+06+-A,+Setor+Urbano,+Araguaína,+TO"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="leading-tight"
+                >
+                  Rua Guanabara, Quadra D, Lote 06 -A<br />
+                  Setor urbano, Araguaína Tocantins
+                </a>
+              </li>
+
             </ul>
           </div>
         </div>
       </section>
-
-
-
     </div>
   );
 }
