@@ -62,9 +62,9 @@ export default function Home() {
         </div>
 
         <div className="max-w-xl w-full">
-          <p className="text-[1.5rem] font-semibold text-left mb-1" id="silvano-nome">
+          <h2 className="text-[1.5rem] font-semibold text-left mb-1" id="silvano-nome">
             Silvano Almeida Nascimento
-          </p>
+          </h2>
           <p className="text-[1.1rem] text-center md:text-left text-gray-700 mb-4">
             Advogado - OAB/TO 7.049
           </p>
